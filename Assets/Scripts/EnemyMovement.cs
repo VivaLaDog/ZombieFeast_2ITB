@@ -5,18 +5,11 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    NavMeshAgent agent;
 
-    // Start is called before the first frame update
+    NavMeshAgent agent;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(new Vector3(3, 0, 3));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        agent.SetDestination(GameManager.Instance.GetClosestBrain(transform.position).position);
     }
 }
