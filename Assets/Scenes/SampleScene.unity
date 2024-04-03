@@ -155,8 +155,20 @@ MonoBehaviour:
   brains:
   - {fileID: 1440609077}
   spawnPointsParent: {fileID: 736892578}
-  enemyPrefab: {fileID: 842408090858073996, guid: 7239ce16215d4ee4bae676bfb0e4cf3b,
-    type: 3}
+  enemyPrefabs:
+  - {fileID: 736144632463397457, guid: 68aef10092723e54e8ffa73e4ab2b5cf, type: 3}
+  - {fileID: 842408090858073996, guid: 7239ce16215d4ee4bae676bfb0e4cf3b, type: 3}
+  - {fileID: 7378525974023136649, guid: 65fc2a40affea3d44bf336087d8d5e5d, type: 3}
+  enemyColors:
+  - probability: 60
+    enemyColor: {fileID: 2100000, guid: 7246b41c48b4cd345935b99327c0d36d, type: 2}
+    damage: 10
+  - probability: 30
+    enemyColor: {fileID: 2100000, guid: d75edf6880e895f4db0ed48a68def3e5, type: 2}
+    damage: 20
+  - probability: 10
+    enemyColor: {fileID: 2100000, guid: b7c251f4136c08c488e133fbb9ba67c2, type: 2}
+    damage: 40
   spawnInterval: 1
 --- !u!4 &43303122
 Transform:
