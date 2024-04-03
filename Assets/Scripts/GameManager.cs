@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField]
+    private bool spawn = true;
+
+    [SerializeField]
     private List<Transform> brains;
 
     [Header("Spawn values")]
@@ -58,7 +61,8 @@ public class GameManager : MonoBehaviour
     {
         while(true)
         {
-            SpawnEnemy();
+            if(spawn)
+                SpawnEnemy();
             yield return new WaitForSeconds(spawnInterval);
         }
     }

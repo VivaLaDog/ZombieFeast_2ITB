@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 7070392097058175248}
   - component: {fileID: 87073073958391358}
   - component: {fileID: 4678693991936235345}
+  - component: {fileID: 1218752782460336293}
   m_Layer: 5
   m_Name: HpCanvas
   m_TagString: Untagged
@@ -352,6 +353,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1218752782460336293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5906841636999991967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 305f843d1713cd449ba2118a78c1ffab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7378525974023136655
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +382,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &7378525974023136651
 Transform:
@@ -396,7 +409,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7378525974023136655}
   m_Enabled: 1
-  m_AgentTypeID: -334000983
+  m_AgentTypeID: 0
   m_Radius: 0.3
   m_Speed: 3
   m_Acceleration: 8

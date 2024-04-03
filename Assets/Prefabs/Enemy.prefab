@@ -93,7 +93,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &842408090858073998
 Transform:
@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 8280865101768320217}
   - component: {fileID: 2483434273870471134}
   - component: {fileID: 6594993207404153444}
+  - component: {fileID: 1858499195763038921}
   m_Layer: 5
   m_Name: HpCanvas
   m_TagString: Untagged
@@ -262,6 +263,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1858499195763038921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518146948227990113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 305f843d1713cd449ba2118a78c1ffab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5395641881161660313
 GameObject:
   m_ObjectHideFlags: 0

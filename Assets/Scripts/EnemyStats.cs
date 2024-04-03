@@ -19,8 +19,9 @@ public class EnemyStats : MonoBehaviour
     [SerializeField]
     private Image hpBar;
 
-    private int CurrentHp
+    private float CurrentHp
     {
+        get { return currentHp; }
         set
         {
             currentHp = Mathf.Max(value, 0f);
@@ -33,9 +34,20 @@ public class EnemyStats : MonoBehaviour
         meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
 
+    private void Start()
+    {
+        CurrentHp = maxHp;
+    }
+
     public void SetType(Material color, int damage)
     {
         meshRenderer.material = color;
         this.damage = damage;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        CurrentHp -= damage;
+        if(CurrentHp <= 0f) { Destroy(gameObject); }
     }
 }

@@ -10,6 +10,11 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        Invoke("SetDestination", 0.5f);
+    }
+
+    private void SetDestination()
+    {
         agent.SetDestination(GameManager.Instance.GetClosestBrain(transform.position).position);
     }
 }
