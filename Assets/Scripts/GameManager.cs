@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,9 +25,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<SpawnData> enemyColors;
 
+    [SerializeField]
+    private GameObject endGameScreen;
+
+    [SerializeField]
+    private TMPro.TMP_Text timeText;
+
     [Range(0.25f,5)]
     [SerializeField]
     private float spawnInterval;
+
+    private float timeAlive = 0;
 
     private void Awake()
     {
@@ -35,6 +44,11 @@ public class GameManager : MonoBehaviour
         {
             spawnPoints.Add(spawnPointsParent.GetChild(i));
         }
+    }
+
+    private void Update()
+    {
+        timeAlive += Time.deltaTime;
     }
 
     public Transform GetClosestBrain(Vector3 position)
@@ -97,6 +111,30 @@ public class GameManager : MonoBehaviour
     {
         var point = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Count)];
         return point.position;
+    }
+
+    public void EndGame()
+    {
+        // zastavení hry
+        Time.timeScale = 0;
+
+        endGameScreen.SetActive(true);
+
+        var levelName = SceneManager.GetActiveScene().name;
+        float bestTime = PlayerPrefs.GetFloat(levelName, 0f);
+        if(timeAlive > bestTime)
+        {
+            PlayerPrefs.SetFloat(levelName, timeAlive);
+            timeText.text = timeAlive + " seconds, new TOP";
+        } else
+        {
+            timeText.text = timeAlive + " seconds";
+        }
+    }
+
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
 

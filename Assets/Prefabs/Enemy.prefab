@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 842408090858073999}
   - component: {fileID: 842408090858073996}
   - component: {fileID: -7009731622821354985}
+  - component: {fileID: 7949317963521834651}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -160,6 +161,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   hpBar: {fileID: 5939123225437571624}
+--- !u!54 &7949317963521834651
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842408090858073994}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &1518146948227990113
 GameObject:
   m_ObjectHideFlags: 0
