@@ -164,15 +164,19 @@ MonoBehaviour:
   - probability: 60
     enemyColor: {fileID: 2100000, guid: 7246b41c48b4cd345935b99327c0d36d, type: 2}
     damage: 10
+    worth: 2
   - probability: 30
     enemyColor: {fileID: 2100000, guid: d75edf6880e895f4db0ed48a68def3e5, type: 2}
     damage: 20
+    worth: 5
   - probability: 10
     enemyColor: {fileID: 2100000, guid: b7c251f4136c08c488e133fbb9ba67c2, type: 2}
     damage: 40
+    worth: 10
   endGameScreen: {fileID: 1868422683}
   timeText: {fileID: 743468911}
-  spawnInterval: 0.25
+  spawnInterval: 1.24
+  score: 0
 --- !u!4 &43303122
 Transform:
   m_ObjectHideFlags: 0

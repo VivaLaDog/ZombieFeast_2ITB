@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderGraph.Internal;
@@ -19,6 +20,10 @@ public class EnemyStats : MonoBehaviour
     [SerializeField]
     private Image hpBar;
 
+
+    private float worth;
+
+
     private float CurrentHp
     {
         get { return currentHp; }
@@ -33,21 +38,29 @@ public class EnemyStats : MonoBehaviour
     {   
         meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
-
+    
     private void Start()
     {
         CurrentHp = maxHp;
     }
 
-    public void SetType(Material color, int damage)
+    public void SetType(Material color, int damage, float cena)
     {
         meshRenderer.material = color;
         this.damage = damage;
+        worth = cena;
     }
-
+    
     public void TakeDamage(int damage)
     {
         CurrentHp -= damage;
-        if(CurrentHp <= 0f) { Destroy(gameObject); }
+        if(CurrentHp <= 0f) { 
+            Destroy(gameObject);
+            //this guy dies, and a key gets a ++ with the amount of points the guy is worth
+
+            GameManager.Instance.score += worth;
+
+            Debug.Log(GameManager.Instance.score);
+        }
     }
 }

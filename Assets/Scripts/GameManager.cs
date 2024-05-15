@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     private float timeAlive = 0;
 
+    public float score;
+
     private void Awake()
     {
         Instance = this;
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
         {
             spawnPoints.Add(spawnPointsParent.GetChild(i));
         }
+        score = PlayerPrefs.GetFloat(totalScore);
     }
 
     private void Update()
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         StartCoroutine(SpawnEnemies());
     }
 
@@ -86,7 +90,7 @@ public class GameManager : MonoBehaviour
         var enemy = Instantiate(GetRandomPrefab(), GetRandomSpawnPoint(), Quaternion.identity);
         var color = GetColorForEnemy();
         var stats = enemy.GetComponent<EnemyStats>();
-        stats.SetType(color.enemyColor, color.damage);
+        stats.SetType(color.enemyColor, color.damage, color.worth);
     }
 
     private EnemyMovement GetRandomPrefab()
@@ -113,6 +117,7 @@ public class GameManager : MonoBehaviour
         return point.position;
     }
 
+    string totalScore;
     public void EndGame()
     {
         // zastavení hry
@@ -120,14 +125,19 @@ public class GameManager : MonoBehaviour
 
         endGameScreen.SetActive(true);
 
+
         var levelName = SceneManager.GetActiveScene().name;
         float bestTime = PlayerPrefs.GetFloat(levelName, 0f);
         if(timeAlive > bestTime)
         {
             PlayerPrefs.SetFloat(levelName, timeAlive);
+
+            PlayerPrefs.SetFloat(totalScore, score);
+            
             timeText.text = timeAlive + " seconds, new TOP";
         } else
         {
+            PlayerPrefs.SetFloat(totalScore, score);
             timeText.text = timeAlive + " seconds";
         }
     }
@@ -144,4 +154,5 @@ public class SpawnData
     public int probability; // normal %
     public Material enemyColor;
     public int damage;
+    public float worth;
 }

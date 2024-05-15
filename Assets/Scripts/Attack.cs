@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,14 +16,54 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        DeadMaus();
+        AOECheckAndAttack();
+    }
+
+    private void AOECheckAndAttack()
+    {
+        if (Input.GetMouseButtonDown(1))
         {
-            var ray= cam.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out RaycastHit hit, 150f))
+            if (GameManager.Instance.score < 5)
+            {
+                return;
+            }
+            else
+            {
+                GameManager.Instance.score -= 5;
+
+                var ray = cam.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out RaycastHit hit, 150f))
+                {
+                    var ground = hit.collider.GetComponent<MeshFilter>();
+
+                    if (ground != null)
+                    {
+                        Debug.Log(ground.sharedMesh.name);
+                        if(ground.sharedMesh.name == "Plane")
+                        {
+
+                        }
+                        Debug.Log(GameManager.Instance.score);
+                    }
+
+                }
+            }
+        }
+    }
+    
+
+    void DeadMaus()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            var ray = cam.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 150f))
             {
                 var enemy = hit.collider.GetComponentInParent<EnemyStats>();
-                enemy.TakeDamage(10);
+                if (enemy != null)
+                    enemy.TakeDamage(50);
             }
-        }   
+        }
     }
 }
